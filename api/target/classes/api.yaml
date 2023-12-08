@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: Bikesharing REST API
+  version: 0.0.1
+tags:
+  - name: api
+    description: semestral project bikesharing api
+paths:
+  /hello:
+    get:
+      tags:
+        - test
+      summary: Says hello on behalf of given user
+      operationId: sayHello
+      parameters:
+        - name: from
+          in: query
+          description: blah
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Hello World from Pavel!
+        '405':
+          description: Not supported HTTP method.
+        '406':
+          description: Not acceptable response representation.
+  /stands:
+    get:
+      tags:
+        - stands
+      summary: Retrieves all stands currently in the system.
+      operationId: retrieveStands
+      responses:
+        '200':
+          description: Stands are retrieved.
+          content:
+            text/html:
+              schema:
+                type: string
+        '405':
+          description: Not supported HTTP method.
+        '406':
+          description: Not acceptable response representation.
+        '500':
+          description: Server error.
+  /stands/{standId}:
+    get:
+      tags:
+        - stands
+      summary: Retrieves bikes that belong to stand with given id.
+      operationId: retrieveStandBikes
+      parameters:
+        - name: standId
+          in: path
+          description: id of stand
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Stand is retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandDTO'
+        '405':
+          description: Not supported HTTP method.
+        '406':
+          description: Not acceptable response representation.
+        '500':
+          description: Server error.
+  /bikes:
+    get:
+      tags:
+        - bikes
+      summary: Retrieves all bikes currently in the system.
+      operationId: retrieveBikes
+      responses:
+        '200':
+          description: Bikes are retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BikeDTO'
+        '405':
+          description: Not supported HTTP method.
+        '406':
+          description: Not acceptable response representation.
+        '500':
+          description: Server error.
+components:
+  schemas:
+    BikeDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        location:
+          $ref: '#/components/schemas/LocationDTO'
+        lastServiceDate:
+          type: string
+          format: date
+        stand:
+          $ref: '#/components/schemas/StandDTO'
+      required:
+        - id
+        - location
+        - lastServiceTimestamp
+    StandDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        location:
+          $ref: '#/components/schemas/LocationDTO'
+        bikes:
+          type: array
+          items:
+            $ref: '#/components/schemas/BikeDTO'
+      required:
+        - id
+        - name
+        - location
+    LocationDTO:
+      type: object
+      properties:
+        longitude:
+          type: number
+          format: double
+        latitude:
+          type: number
+          format: double
+      required:
+        - longitude
+        - latitude

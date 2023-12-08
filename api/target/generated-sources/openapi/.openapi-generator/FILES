@@ -1,0 +1,10 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/cz/kiv/pia/api/controller/ApiUtil.java
+src/main/java/cz/kiv/pia/api/controller/BikesApi.java
+src/main/java/cz/kiv/pia/api/controller/HelloApi.java
+src/main/java/cz/kiv/pia/api/controller/StandsApi.java
+src/main/java/cz/kiv/pia/api/model/BikeDTO.java
+src/main/java/cz/kiv/pia/api/model/LocationDTO.java
+src/main/java/cz/kiv/pia/api/model/StandDTO.java
