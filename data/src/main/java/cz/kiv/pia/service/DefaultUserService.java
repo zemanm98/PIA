@@ -46,7 +46,7 @@ public class DefaultUserService implements UserService{
      */
     @Override
     public User loadUserByUsername(String email){
-        LOG.info("Retrieving user with email" + email);
+        LOG.info("Retrieving user with email " + email);
         return userRepository.getUserByEmail(email);
     }
 }
