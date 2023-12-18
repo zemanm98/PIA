@@ -25,5 +25,11 @@ public interface StandRepository {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Gets pne specific stand by given stand id.
+     * @param id - id of a stand
+     * @return - found Stand with given id.
+     */
     Stand getStandById(int id);
+
 }

@@ -12,7 +12,10 @@
         <version>3.1.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
+    <properties>
+        <java.version>17</java.version>
+        <start-class>cz.kiv.pia.restapi.Main</start-class>
+    </properties>
 
     <modules>
         <module>data</module>
@@ -23,10 +26,6 @@
     <groupId>cz.kiv.pia</groupId>
     <artifactId>PIA-sem</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <java.version>17</java.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,6 +37,25 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
-
+<!--    <build>-->
+<!--            <plugins>-->
+<!--                <plugin>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                    <configuration>-->
+<!--                        <requiresUnpack>-->
+<!--                            <dependency>-->
+<!--                                <groupId>org.jruby</groupId>-->
+<!--                                <artifactId>jruby-complete</artifactId>-->
+<!--                            </dependency>-->
+<!--                        </requiresUnpack>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
+<!--            </plugins>-->
+<!--    </build>-->
 </project>

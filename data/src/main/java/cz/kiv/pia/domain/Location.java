@@ -25,6 +25,11 @@ public class Location {
         this.latitude = parseCoordinate(latitude);
     }
 
+    /**
+     * parse location from String with N and E characters to Double.
+     * @param coordinate - String with N and E characters
+     * @return - Double representation of a coordinate.
+     */
     private static Double parseCoordinate(String coordinate) {
         return Double.parseDouble(coordinate.replaceAll("N|E|S|W", ""));
     }

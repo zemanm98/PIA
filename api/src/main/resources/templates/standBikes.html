@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+  <link rel="stylesheet" th:href="@{/App.css}">
+</head>
+<body layout:fragment="content">
+<a th:href="@{/}">Back</a>
+<table class="tb">
+  <thead>
+  <tr>
+    <th> ID </th>
+    <th> Last Service Date </th>
+    <th> Ride This Bike </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${bikes.empty}">
+    <td colspan="2"> No Bikes at this Stand </td>
+  </tr>
+  <tr th:each="bike : ${bikes}">
+    <td><span th:text="${bike.id}"> ID </span></td>
+    <td><span th:text="${bike.lastServiceStamp}"> Last Service Date </span></td>
+    <td><form method="GET" th:action="@{/bikes/ride/{bikeId}(bikeId=${bike.id})}">
+      <button type="submit" name="submit" value="value" class="link-button">Ride this Bike</button>
+    </form> </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

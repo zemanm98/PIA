@@ -25,6 +25,10 @@ public class JdbcTemplateStandRepository implements StandRepository {
         this.rowMapper = standRowMapper;
     }
 
+    /**
+     * Returns all stands in system
+     * @return - all stands
+     */
     @Override
     public Collection<Stand> getAll() {
         var sql = """
@@ -43,11 +47,24 @@ public class JdbcTemplateStandRepository implements StandRepository {
                 .toList();
     }
 
+    /**
+     * Returns specific stand by given stand id
+     * @param id - id of a stand
+     * @return - stand with given stand id.
+     */
     @Override
     public Stand getStandById(int id) {
         var sql = """
-                SELECT 
+                SELECT id, name, longitude, latitude FROM stand WHERE id = ?
                 """;
-        return null;
+        var result = jdbcTemplate.query(sql, rowMapper, id);
+        return result.stream()
+                .map(standDTO -> {
+                    var standId = standDTO.id();
+                    var name = standDTO.name();
+                    var location = new Location(standDTO.location().longitude(), standDTO.location().latitude());
+                    return new Stand(standId, name, location);
+                })
+                .toList().get(0);
     }
 }

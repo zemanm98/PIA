@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <link rel="stylesheet" th:href="@{/App.css}">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+  <script src="/app.js"></script>
+</head>
+<body layout:fragment="content">
+<p>Ride can be ended when within 50 meters of any stand.</p>
+<br>
+<button id="disconnect" class="btn btn-default" th:onclick="disconnect()" disabled="disabled">End Ride</button>
+<br>
+<label id="conversation"></label>
+<br>
+<button id="connect" class="btn btn-default" th:onclick="connect([[${profile.id}]], [[${bikeId}]])">Ride Bike</button>
+
+
+</body>
+</html>

@@ -11,6 +11,9 @@ import org.springframework.context.event.EventListener;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+/**
+ * Main starting class.
+ */
 @SpringBootApplication
 @ComponentScan(basePackages = "cz.kiv.pia")
 public class Main extends SpringBootServletInitializer {

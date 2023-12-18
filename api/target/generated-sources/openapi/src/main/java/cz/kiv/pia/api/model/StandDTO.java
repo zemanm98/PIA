@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
  * StandDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-12-08T14:02:30.270309700+01:00[Europe/Prague]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-12-18T19:22:30.081980700+01:00[Europe/Prague]")
 public class StandDTO {
 
   private Integer id;

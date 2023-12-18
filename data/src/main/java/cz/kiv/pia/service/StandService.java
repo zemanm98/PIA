@@ -15,5 +15,11 @@ public interface StandService {
      */
     Collection<Stand> getAll();
 
-    Stand getStand(int id);
+    /**
+     * Returns certain stand with given id.
+     * @param id - stand id
+     * @return - stan with given id
+     */
+    Stand getStandById(int id);
+
 }

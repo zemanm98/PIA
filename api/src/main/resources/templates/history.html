@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <link rel="stylesheet" th:href="@{/App.css}">
+  <style>
+    #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+  </style>
+</head>
+<body layout:fragment="content">
+
+<a th:href="@{/}">Back</a>
+<table class="customers">
+  <thead>
+  <tr>
+    <th> Bike ID </th>
+    <th> Start Stand </th>
+    <th> End Stand </th>
+    <th> Start Time </th>
+    <th> End Time </th>
+    <th> State </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${rides.empty}">
+    <td colspan="2"> You have no rides </td>
+  </tr>
+  <tr th:each="ride : ${rides}">
+    <td><span th:text="${ride.bike.id}"> ID </span></td>
+    <td><span th:text="${ride.startStand.name}"> Start Stand </span></td>
+    <td><span th:text="${ride.endStand.name}">End Stand</span></td>
+    <td><span th:text="${ride.startTimeStamp}"> Start Time </span></td>
+    <td><span th:text="${ride.endTimeStamp}"> End Time </span></td>
+    <td><span th:text="${ride.state}">State</span></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

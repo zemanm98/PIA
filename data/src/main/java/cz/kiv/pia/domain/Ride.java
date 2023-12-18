@@ -1,6 +1,7 @@
 package cz.kiv.pia.domain;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ public class Ride {
     /**
      * User riding the {@link #bike}
      */
-    private User user;
+    private String user;
     /**
      * Bike ridden by the {@link #user}
      */
@@ -27,7 +28,7 @@ public class Ride {
     /**
      * Starting timestamp of the ride
      */
-    private Instant startTimestamp;
+    private LocalDateTime startTimestamp;
     /**
      * Starting {@link Stand} of the ride
      */
@@ -35,7 +36,7 @@ public class Ride {
     /**
      * Ending timestamp of the ride. Null until the ride is finished
      */
-    private Instant endTimestamp;
+    private LocalDateTime endTimestamp;
     /**
      * Ending {@link Stand} of the ride. Null until the ride is finished
      */
@@ -47,12 +48,12 @@ public class Ride {
     }
 
     // constructor used when starting a new Ride
-    Ride(User user, Bike bike, Stand startStand) {
-        this(0, user, bike, State.STARTED, Instant.now(), startStand, null, null);
+    Ride(String user, Bike bike, Stand startStand) {
+        this(0, user, bike, State.STARTED, LocalDateTime.now(), startStand, null, null);
     }
 
     // constructor used when full Ride object is loaded from storage
-    public Ride(int id, User user, Bike bike, State state, Instant startTimestamp, Stand startStand, Instant endTimestamp, Stand endStand) {
+    public Ride(int id, String user, Bike bike, State state, LocalDateTime startTimestamp, Stand startStand, LocalDateTime endTimestamp, Stand endStand) {
         this.id = id;
         this.user = user;
         this.bike = bike;
@@ -67,7 +68,7 @@ public class Ride {
         return id;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
@@ -79,7 +80,7 @@ public class Ride {
         return state;
     }
 
-    public Instant getStartTimestamp() {
+    public LocalDateTime getStartTimestamp() {
         return startTimestamp;
     }
 
@@ -87,38 +88,12 @@ public class Ride {
         return startStand;
     }
 
-    public Instant getEndTimestamp() {
+    public LocalDateTime getEndTimestamp() {
         return endTimestamp;
     }
 
     public Stand getEndStand() {
         return endStand;
-    }
-
-    /**
-     * Completes this ride at given {@link Stand}.
-     *
-     * @param endStand End stand where the ride is completed
-     */
-    public void complete(Stand endStand) {
-        this.state = State.COMPLETED;
-        this.endTimestamp = Instant.now();
-        this.endStand = endStand;
-        this.bike.addToStand(endStand);
-    }
-
-    /**
-     * @return true if this ride is started, false otherwise
-     */
-    public boolean isStarted() {
-        return state == State.STARTED;
-    }
-
-    /**
-     * @return true if this ride is completed, false otherwise
-     */
-    public boolean isCompleted() {
-        return state == State.COMPLETED;
     }
 
     @Override

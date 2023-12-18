@@ -1,84 +1,74 @@
 package cz.kiv.pia.domain;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
-import java.util.UUID;
 
 /**
  * Represents a single user of the service.
  */
-public class User {
+public class User{
     /**
      * Unique identifier.
      */
-    private final int id;
+    private final String id;
     /**
      * Full name of the user.
      */
-    private final String name;
-    /**
-     * Email address of the user, used for log in.
-     */
-    private final String emailAddress;
+    private final String userName;
+
+    private final String email;
     /**
      * Role of the user.
      */
     private final Role role;
 
-    public User(int id, String name, String emailAddress, Role role) {
+    private final String password;
+
+    public User(String id, String userName, String email, Role role, String password) {
         this.id = id;
-        this.name = name;
-        this.emailAddress = emailAddress;
+        this.userName = userName;
+        this.email = email;
         this.role = role;
+        this.password = password;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
+    public String getPassword(){return password;}
 
     public Role getRole() {
         return role;
     }
 
-    /**
-     * Starts a new bike ride of this user on given bike.
-     *
-     * @param bike Bike used for the bike ride
-     * @return Started bike ride
-     */
-    public Ride startRide(Bike bike) {
-        var startStand = bike.getStand();
-
-        bike.removeFromStand();
-
-        return new Ride(this, bike, startStand);
-    }
+    public String getEmail(){return email;}
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(emailAddress, user.emailAddress) && role == user.role;
+        return Objects.equals(id, user.id) && Objects.equals(userName, user.userName) && role == user.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, emailAddress, role);
+        return Objects.hash(id, userName, role);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
+                ", name='" + userName + '\'' +
                 ", role=" + role +
                 '}';
     }

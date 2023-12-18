@@ -24,25 +24,40 @@
     </li>
   </ul>
 </noscript>
-
 <div id="map"></div>
 
 <script th:inline="javascript">
-        const map = L.map('map').setView([49.7269708, 13.3516872], 13);
+        var map = L.map('map').setView([49.7269708, 13.3516872], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
         const stands = /*[[${stands}]]*/ [];
+        const bikes = /*[[${bikes}]]*/ [];
 
         for (let stand of stands) {
             const coords = [
-                stand.location.longitude,
                 stand.location.latitude,
+                stand.location.longitude,
+                stand.id
             ];
-            const marker = L.marker(coords).addTo(map);
-            marker.bindPopup(stand.name);
+            const marker = L.marker([stand.location.latitude, stand.location.longitude], {id: stand.id});
+            marker.addTo(map)
+            marker.on('click', onClick);
+        }
+
+        for(let bike of bikes){
+            var bikeIcon = L.icon({iconUrl: 'bicycle.png',
+                                     iconSize: [30, 30],
+                                     iconAnchor: [15, 15]});
+            L.marker([bike.location.latitude, bike.location.longitude], {icon: bikeIcon}).addTo(map);
+
+        }
+
+        function onClick(e){
+            const currentUrl = window.location.href;
+            window.location.href = currentUrl + "bikes/" + this.options.id;
         }
     </script>
 </body>
