@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
 /**
@@ -43,6 +44,7 @@ public class DefaultStandService implements StandService {
      */
     @Override
     public Stand getStandById(int id) {
+        LOG.info("Retrieving stand " + id);
         return standRepository.getStandById(id);
     }
 

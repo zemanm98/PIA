@@ -53,6 +53,7 @@ public class DefaultRideService implements RideService{
      */
     @Override
     public int createRide(String userId, Bike bike) {
+        LOG.info("Starting ride with bike " + bike.getId() + " and user " + userId);
         return rideRepository.createRide(userId, bike.getId(), bike.getStand().getId(), LocalDateTime.now(), "STARTED");
     }
 
@@ -64,6 +65,7 @@ public class DefaultRideService implements RideService{
      */
     @Override
     public int endRide(int rideId, int standId) {
+        LOG.info("Ending ride " + rideId + " ending stand " + standId);
         return rideRepository.endRide(rideId, standId, LocalDateTime.now(), "COMPLETED");
     }
 }

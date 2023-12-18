@@ -35,6 +35,7 @@ public class DefaultUserService implements UserService{
      */
     @Override
     public int save(String userName, String email, String password) {
+        LOG.info("Creating a new user with email " + email);
         return userRepository.save(userName, email, password, "REGULAR");
     }
 
@@ -45,6 +46,7 @@ public class DefaultUserService implements UserService{
      */
     @Override
     public User loadUserByUsername(String email){
+        LOG.info("Retrieving user with email" + email);
         return userRepository.getUserByEmail(email);
     }
 }

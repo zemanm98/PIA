@@ -56,7 +56,7 @@ public class DefaultBikeService implements BikeService{
      */
     @Override
     public Collection<Bike> getBikesByStandId(int id) {
-        LOG.info("Getting all bikes of specified Stand");
+        LOG.info("Getting all bikes of Stand with id: " + id);
         Predicate<Bike> streamsPredicate = item -> !item.isDueForService(this.serviceInterval);
 
         return this.bikeRepository.getBikesByStandId(id).stream().filter(streamsPredicate).collect(Collectors.toList());
@@ -96,6 +96,7 @@ public class DefaultBikeService implements BikeService{
      */
     @Override
     public Bike getBikeById(int id) {
+        LOG.info("Retrieving Bike with id: " + id);
         return bikeRepository.getBikeById(id);
     }
 
@@ -107,6 +108,7 @@ public class DefaultBikeService implements BikeService{
      */
     @Override
     public int updateBike(int id, Location newLocation) {
+        LOG.info("Updating location for bike with id: " + id);
         return bikeRepository.updateBike(id, newLocation);
     }
 
@@ -117,6 +119,7 @@ public class DefaultBikeService implements BikeService{
      */
     @Override
     public int setBikeInUse(int id) {
+        LOG.info("Setting bike as in use. Bike id: " + id);
         return bikeRepository.setBikeInUse(id, 1);
     }
 
@@ -128,6 +131,7 @@ public class DefaultBikeService implements BikeService{
      */
     @Override
     public int updateBikeStand(int bikeId, int standId) {
+        LOG.info("Updating bikes stand, Bike id: " + bikeId + " Stand id: " + standId);
         return bikeRepository.updateBikeStand(bikeId, standId, 0);
     }
 
