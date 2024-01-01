@@ -31,21 +31,21 @@
 </head>
 <body layout:fragment="content">
 
-<a th:href="@{/}">Back</a>
+<a id="back" th:href="@{/}">Back</a>
 <table class="customers">
   <thead>
   <tr>
-    <th> Bike ID </th>
-    <th> Start Stand </th>
-    <th> End Stand </th>
-    <th> Start Time </th>
-    <th> End Time </th>
-    <th> State </th>
+    <th id="bikeId"> Bike ID </th>
+    <th id="startStand"> Start Stand </th>
+    <th id="endStand"> End Stand </th>
+    <th id="startTime"> Start Time </th>
+    <th id="endTime"> End Time </th>
+    <th id="state"> State </th>
   </tr>
   </thead>
   <tbody>
   <tr th:if="${rides.empty}">
-    <td colspan="2"> You have no rides </td>
+    <td id="noRides" colspan="2"> You have no rides </td>
   </tr>
   <tr th:each="ride : ${rides}">
     <td><span th:text="${ride.bike.id}"> ID </span></td>
@@ -58,5 +58,59 @@
   </tbody>
 </table>
 
+<script>
+        var loggedAs = document.getElementById('loggedAs');
+        var repairBikes = document.getElementById('repairBikes');
+        var history = document.getElementById('rideHistory');
+        var logout = document.getElementById('logout');
+
+        var back = document.getElementById('back');
+        var bikeId = document.getElementById('bikeId');
+        var startStand = document.getElementById('startStand');
+        var endStand = document.getElementById('endStand');
+        var startTime = document.getElementById('startTime');
+        var endTime = document.getElementById('endTime');
+        var state = document.getElementById('state');
+        var noRides = document.getElementById('noRides');
+
+        const languageSelect = document.getElementById('language-select');
+        languageSelect.addEventListener('change', function() {
+          if (languageSelect.value === 'cz') {
+            back.textContent = 'Zpět';
+            loggedAs.textContent = 'Přihlášen jako: ';
+            if(repairBikes != null){
+              repairBikes.textContent = 'Opravit Kola';
+            }
+            history.textContent = 'Historie Jízd';
+            logout.textContent = 'Odhlásit se';
+            bikeId.textContent = 'ID Kola';
+            startStand.textContent = 'Počáteční stojan';
+            endStand.textContent = 'Konečný stojan';
+            startTime.textContent = 'Počáteční čas';
+            endTime.textContent = 'Konečný čas';
+            state.textContent = 'Stav jízdy';
+            if(noRides != null){
+              noRides.textContent = 'Nemáte zaznamenané žádné jízdy';
+            }
+          } else if (languageSelect.value === 'en') {
+            back.textContent = 'Back';
+            loggedAs.textContent = 'Logged in as: ';
+            if(repairBikes != null){
+              repairBikes.textContent = 'Bikes To Repair';
+            }
+            history.textContent = 'See Ride History';
+            logout.textContent = 'Log out';
+            bikeId.textContent = 'ID';
+            startStand.textContent = 'Start Stand';
+            endStand.textContent = 'End Stand';
+            startTime.textContent = 'Start Time';
+            endTime.textContent = 'End Time';
+            state.textContent = 'State';
+            if(noRides != null){
+              noRides.textContent = 'You have no rides';
+            }
+          }
+        });
+</script>
 </body>
 </html>

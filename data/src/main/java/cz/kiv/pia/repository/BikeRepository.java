@@ -18,7 +18,7 @@ public interface BikeRepository {
 
     /**
      * Get all bikes with given stand id. That are not in use.
-     * @param id - id of s tand
+     * @param id - id of stand
      * @return - return bikes with stand id = id
      */
     Collection<Bike> getBikesByStandId(int id);

@@ -27,6 +27,50 @@
 <div id="map"></div>
 
 <script th:inline="javascript">
+
+        var login = document.getElementById('login');
+        var loggedAs = document.getElementById('loggedAs');
+        var repairBikes = document.getElementById('repairBikes');
+        var history = document.getElementById('rideHistory');
+        var logout = document.getElementById('logout');
+
+        const languageSelect = document.getElementById('language-select');
+        languageSelect.addEventListener('change', function() {
+          if (languageSelect.value === 'cz') {
+            if(login != null){
+              login.textContent = 'Přihlásit se';
+            }
+            if(loggedAs != null){
+              loggedAs.textContent = 'Přihlášen jako: ';
+            }
+            if(repairBikes != null){
+              repairBikes.textContent = 'Opravit Kola';
+            }
+            if(history != null){
+              history.textContent = 'Historie Jízd';
+            }
+            if(logout != null){
+              logout.textContent = 'Odhlásit se';
+            }
+          } else if (languageSelect.value === 'en') {
+            if(login != null){
+              login.textContent = 'Login';
+            }
+            if(loggedAs != null){
+              loggedAs.textContent = 'Logged in as: ';
+            }
+            if(repairBikes != null){
+              repairBikes.textContent = 'Bikes To Repair';
+            }
+            if(history != null){
+              history.textContent = 'See Ride History';
+            }
+            if(logout != null){
+              logout.textContent = 'Log out';
+            }
+          }
+        });
+
         var map = L.map('map').setView([49.7269708, 13.3516872], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,

@@ -40,6 +40,41 @@ stompClient.onStompError = (frame) => {
     console.error('Additional details: ' + frame.body);
 };
 
+window.onload = function(){
+var loggedAs = document.getElementById('loggedAs');
+var repairBikes = document.getElementById('repairBikes');
+var history = document.getElementById('rideHistory');
+var logout = document.getElementById('logout');
+var info = document.getElementById('info');
+var disconnect = document.getElementById('disconnect');
+var connect = document.getElementById('connect');
+
+const languageSelect = document.getElementById('language-select');
+languageSelect.addEventListener('change', function() {
+  if (languageSelect.value === 'cz') {
+    loggedAs.textContent = 'Přihlášen jako: ';
+    if(repairBikes != null){
+      repairBikes.textContent = 'Opravit Kola';
+    }
+    history.textContent = 'Historie Jízd';
+    logout.textContent = 'Odhlásit se';
+    info.textContent = 'Jízda může být ukončena pokud jste nejvýše 50 metrů od stojanu.';
+    disconnect.textContent = 'Ukončit jízdu s kolem';
+    connect.textContent = 'Začít jízdu s kolem';
+  } else if (languageSelect.value === 'en') {
+    loggedAs.textContent = 'Logged in as: ';
+    if(repairBikes != null){
+      repairBikes.textContent = 'Bikes To Repair';
+    }
+    history.textContent = 'See Ride History';
+    logout.textContent = 'Log out';
+    info.textContent = 'Ride can be ended when within 50 meters of any stand.';
+    disconnect.textContent = 'End Ride';
+    connect.textContent = 'Ride Bike';
+  }
+});
+}
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
 

@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Please Log In</title>
+    <title id="title">Please Log In</title>
     <style>
         .error {
         color: red;
@@ -8,26 +8,75 @@
     </style>
 </head>
 <body>
+<select id="language-select">
+    <option value="en">English</option>
+    <option value="cz">Česky</option>
+</select>
 <form class="form-signin" th:action="@{/login}" method="post">
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <p>Example: user / password</p>
-    <p th:if="${param.error}" class="error">Invalid user or password</p>
+    <h2 id="signin" class="form-signin-heading">Please Log In</h2>
+    <p id="example">Example: user / password</p>
+    <p id="error" th:if="${param.error}" class="error">Invalid user or password</p>
     <p>
-        <label for="username" class="sr-only">Email Address</label>
+        <label id="emailAdress" for="username" class="sr-only">Email</label>
         <input type="text" id="username" name="username" class="form-control"
-               placeholder="Email Address" required autofocus/>
+               placeholder="" required autofocus/>
     </p>
     <p>
-        <label for="password" class="sr-only">Password</label>
+        <label id="passwordLabel" for="password" class="sr-only">Password</label>
         <input type="password" id="password" name="password" class="form-control"
-               placeholder="Password" required autofocus/>
+               placeholder="" required autofocus/>
     </p>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br/>
-    <p><a href="/" th:href="@{/}">Back to home page</a></p>
+    <button id="signInButton" class="btn btn-lg btn-primary btn-block" type="submit">Log in</button><br/>
+    <p><a id="homePage" href="/" th:href="@{/}">Back to home page</a></p>
 </form>
 <br>
-<a th:href="@{/register}">Register New User</a>
+<a id="register" th:href="@{/register}">Register New User</a>
 <br>
-<a th:href="@{/oauth2/authorization/okta}">Log Vie 0Auth2</a>
+<a id="viaAuth" th:href="@{/oauth2/authorization/okta}">Log Vie 0Auth2</a>
+
+<script>
+    var login = document.getElementById('login');
+        var title = document.getElementById('title');
+        var signin = document.getElementById('signin');
+        var error = document.getElementById('error');
+        var emailAdress = document.getElementById('emailAdress');
+        var passwordLabel = document.getElementById('passwordLabel');
+        var signInButton = document.getElementById('signInButton');
+        var homePage = document.getElementById('homePage');
+        var register = document.getElementById('register');
+        var viaAuth = document.getElementById('viaAuth');
+        var example = document.getElementById('example');
+
+        const languageSelect = document.getElementById('language-select');
+        languageSelect.addEventListener('change', function() {
+          if (languageSelect.value === 'cz') {
+            title.textContent = 'Prosím Přihlaste se';
+            signin.textContent = 'Prosím Přihlaste se';
+            if(error != null){
+                error.textContent = 'Neplatné přihlašovací údaje';
+            }
+            emailAdress.textContent = 'Email';
+            passwordLabel.textContent = 'Heslo';
+            signInButton.textContent = 'Přihlásit se';
+            homePage.textContent = 'Domovská stránka';
+            register.textContent = 'Zaregistrovat se';
+            viaAuth.textContent = 'Přihlášení přes Auth0';
+            example.textContent = 'Příklad: email / heslo';
+          } else if (languageSelect.value === 'en') {
+            title.textContent = 'Please Log In';
+            signin.textContent = 'Please Log In';
+            if(error != null){
+                error.textContent = 'Invalid user or password';
+            }
+            emailAdress.textContent = 'Email';
+            passwordLabel.textContent = 'Password';
+            signInButton.textContent = 'Log in';
+            homePage.textContent = 'Back to home page';
+            register.textContent = 'Register New User';
+            viaAuth.textContent = 'Log Vie 0Auth2';
+            example.textContent = 'Example: user / password';
+          }
+        });
+</script>
 </body>
 </html>

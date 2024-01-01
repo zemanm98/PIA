@@ -6,32 +6,7 @@ tags:
   - name: api
     description: semestral project bikesharing api
 paths:
-  /hello:
-    get:
-      tags:
-        - test
-      summary: Says hello on behalf of given user
-      operationId: sayHello
-      parameters:
-        - name: from
-          in: query
-          description: blah
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            text/html:
-              schema:
-                type: string
-                example: Hello World from Pavel!
-        '405':
-          description: Not supported HTTP method.
-        '406':
-          description: Not acceptable response representation.
-  /stands:
+  /api/stands:
     get:
       tags:
         - stands
@@ -41,47 +16,22 @@ paths:
         '200':
           description: Stands are retrieved.
           content:
-            text/html:
-              schema:
-                type: string
-        '405':
-          description: Not supported HTTP method.
-        '406':
-          description: Not acceptable response representation.
-        '500':
-          description: Server error.
-  /stands/{standId}:
-    get:
-      tags:
-        - stands
-      summary: Retrieves bikes that belong to stand with given id.
-      operationId: retrieveStandBikes
-      parameters:
-        - name: standId
-          in: path
-          description: id of stand
-          required: true
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: Stand is retrieved.
-          content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StandDTO'
+                type: array
+                items:
+                  $ref: '#/components/schemas/StandDTO'
         '405':
           description: Not supported HTTP method.
         '406':
           description: Not acceptable response representation.
         '500':
           description: Server error.
-  /bikes:
+  /api/bikes:
     get:
       tags:
         - bikes
-      summary: Retrieves all bikes currently in the system.
+      summary: Retrieves all rideable bikes currently in the system.
       operationId: retrieveBikes
       responses:
         '200':
@@ -98,6 +48,112 @@ paths:
           description: Not acceptable response representation.
         '500':
           description: Server error.
+  /api/bikes/{standId}:
+    get:
+      tags:
+        - bikes
+      summary: Retrieves rideable bikes that belong to stand with given id.
+      operationId: retrieveStandBikes
+      parameters:
+        - name: standId
+          in: path
+          description: id of stand
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Stand bikes are retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BikeDTO'
+        '405':
+          description: Not supported HTTP method.
+        '406':
+          description: Not acceptable response representation.
+        '500':
+          description: Server error.
+  /api/repair:
+    get:
+      tags:
+        - repair
+      summary: Retrieves bikes that are due for a repair
+      operationId: retrieveBikesForReapir
+      responses:
+        '200':
+          description: Bikes for repair are retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BikeDTO'
+        '405':
+          description: Not supported HTTP method.
+        '406':
+          description: Not acceptable response representation.
+        '500':
+          description: Server error.
+  /api/repair/{bikeId}:
+    post:
+      tags:
+        - repair
+      summary: Reapirs specific bike with given bike ID.
+      operationId: repairBike
+      parameters:
+        - name: bikeId
+          in: path
+          description: id of bike
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Bike is repaired.
+          content:
+            application/json:
+              schema:
+                type: string
+        '405':
+          description: Not supported HTTP method.
+        '406':
+          description: Not acceptable response representation.
+        '500':
+          description: Server error.
+  /api/history/{userId}:
+    get:
+      tags:
+        - history
+      summary: Retrieves history of rides ridden by user with given ID.
+      operationId: userRideHistory
+      parameters:
+        - name: userId
+          in: path
+          description: id of user
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: History of rides is retireved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RideDTO'
+        '405':
+          description: Not supported HTTP method.
+        '406':
+          description: Not acceptable response representation.
+        '500':
+          description: Server error.
 components:
   schemas:
     BikeDTO:
@@ -108,7 +164,7 @@ components:
           format: int32
         location:
           $ref: '#/components/schemas/LocationDTO'
-        lastServiceDate:
+        lastServiceStamp:
           type: string
           format: date
         stand:
@@ -127,10 +183,6 @@ components:
           type: string
         location:
           $ref: '#/components/schemas/LocationDTO'
-        bikes:
-          type: array
-          items:
-            $ref: '#/components/schemas/BikeDTO'
       required:
         - id
         - name
@@ -147,3 +199,27 @@ components:
       required:
         - longitude
         - latitude
+    RideDTO:
+      type: object
+      properties:
+        bike:
+          $ref: '#/components/schemas/BikeDTO'
+        startStand:
+          $ref: '#/components/schemas/StandDTO'
+        endStand:
+          $ref: '#/components/schemas/StandDTO'
+        startTimeStamp:
+          type: string
+          format: date-time
+        endTimeStamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+      required:
+        - bike
+        - startStand
+        - endStand
+        - startTimeStamp
+        - endTimeStamp
+        - state

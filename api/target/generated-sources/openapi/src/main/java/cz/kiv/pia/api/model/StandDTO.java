@@ -4,11 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import cz.kiv.pia.api.model.BikeDTO;
 import cz.kiv.pia.api.model.LocationDTO;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.time.OffsetDateTime;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -22,7 +18,7 @@ import jakarta.annotation.Generated;
  * StandDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-12-18T23:10:12.209664200+01:00[Europe/Prague]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-01T16:51:57.058442300+01:00[Europe/Prague]")
 public class StandDTO {
 
   private Integer id;
@@ -30,9 +26,6 @@ public class StandDTO {
   private String name;
 
   private LocationDTO location;
-
-  @Valid
-  private List<@Valid BikeDTO> bikes;
 
   public StandDTO() {
     super();
@@ -107,34 +100,6 @@ public class StandDTO {
     this.location = location;
   }
 
-  public StandDTO bikes(List<@Valid BikeDTO> bikes) {
-    this.bikes = bikes;
-    return this;
-  }
-
-  public StandDTO addBikesItem(BikeDTO bikesItem) {
-    if (this.bikes == null) {
-      this.bikes = new ArrayList<>();
-    }
-    this.bikes.add(bikesItem);
-    return this;
-  }
-
-  /**
-   * Get bikes
-   * @return bikes
-  */
-  @Valid 
-  @Schema(name = "bikes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bikes")
-  public List<@Valid BikeDTO> getBikes() {
-    return bikes;
-  }
-
-  public void setBikes(List<@Valid BikeDTO> bikes) {
-    this.bikes = bikes;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -146,13 +111,12 @@ public class StandDTO {
     StandDTO standDTO = (StandDTO) o;
     return Objects.equals(this.id, standDTO.id) &&
         Objects.equals(this.name, standDTO.name) &&
-        Objects.equals(this.location, standDTO.location) &&
-        Objects.equals(this.bikes, standDTO.bikes);
+        Objects.equals(this.location, standDTO.location);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, location, bikes);
+    return Objects.hash(id, name, location);
   }
 
   @Override
@@ -162,7 +126,6 @@ public class StandDTO {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    bikes: ").append(toIndentedString(bikes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

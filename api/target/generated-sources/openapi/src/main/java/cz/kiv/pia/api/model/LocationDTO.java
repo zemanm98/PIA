@@ -17,7 +17,7 @@ import jakarta.annotation.Generated;
  * LocationDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-12-18T23:10:12.209664200+01:00[Europe/Prague]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-01T16:51:57.058442300+01:00[Europe/Prague]")
 public class LocationDTO {
 
   private Double longitude;

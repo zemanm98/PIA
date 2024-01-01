@@ -7,27 +7,71 @@
   <link rel="stylesheet" th:href="@{/App.css}">
 </head>
 <body layout:fragment="content">
-<a th:href="@{/}">Back</a>
+<a id="back" th:href="@{/}">Back</a>
 <table class="tb">
   <thead>
   <tr>
-    <th> ID </th>
-    <th> Last Service Date </th>
-    <th> Ride This Bike </th>
+    <th id="bikeId"> ID </th>
+    <th id="lastService"> Last Service Date </th>
+    <th id="rideBike"> Ride This Bike </th>
   </tr>
   </thead>
   <tbody>
   <tr th:if="${bikes.empty}">
-    <td colspan="2"> No Bikes at this Stand </td>
+    <td id="noBikes" colspan="2"> No Bikes at this Stand </td>
   </tr>
   <tr th:each="bike : ${bikes}">
     <td><span th:text="${bike.id}"> ID </span></td>
     <td><span th:text="${bike.lastServiceStamp}"> Last Service Date </span></td>
     <td><form method="GET" th:action="@{/bikes/ride/{bikeId}(bikeId=${bike.id})}">
-      <button type="submit" name="submit" value="value" class="link-button">Ride this Bike</button>
+      <button id="rideBikeButton" type="submit" name="submit" value="value" class="link-button">==></button>
     </form> </td>
   </tr>
   </tbody>
 </table>
+<script>
+        var loggedAs = document.getElementById('loggedAs');
+        var repairBikes = document.getElementById('repairBikes');
+        var history = document.getElementById('rideHistory');
+        var logout = document.getElementById('logout');
+        var back = document.getElementById('back');
+        var bikeId = document.getElementById('bikeId');
+        var lastService = document.getElementById('lastService');
+        var rideBike = document.getElementById('rideBike');
+        var noBikes = document.getElementById('noBikes');
+
+        const languageSelect = document.getElementById('language-select');
+        languageSelect.addEventListener('change', function() {
+          if (languageSelect.value === 'cz') {
+            loggedAs.textContent = 'Přihlášen jako: ';
+            if(repairBikes != null){
+              repairBikes.textContent = 'Opravit Kola';
+            }
+            history.textContent = 'Historie Jízd';
+            logout.textContent = 'Odhlásit se';
+            back.textContent = 'Zpět';
+            bikeId.textContent = 'ID Kola';
+            lastService.textContent = 'Poslední oprava Kola';
+            rideBike.textContent = 'Ject na tomto kole';
+            if(noBikes != null){
+              noBikes.textContent = 'U tohoto stojanu nejsou žádná kola';
+            }
+          } else if (languageSelect.value === 'en') {
+            loggedAs.textContent = 'Logged in as: ';
+            if(repairBikes != null){
+              repairBikes.textContent = 'Bikes To Repair';
+            }
+            history.textContent = 'See Ride History';
+            logout.textContent = 'Log out';
+            back.textContent = 'Back';
+            bikeId.textContent = 'ID';
+            lastService.textContent = 'Last Service Date';
+            rideBike.textContent = 'Ride this Bike';
+            if(noBikes != null){
+              noBikes.textContent = 'No Bikes at this Stand';
+            }
+          }
+        });
+</script>
 </body>
 </html>

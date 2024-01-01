@@ -9,14 +9,12 @@
   <script src="/app.js"></script>
 </head>
 <body layout:fragment="content">
-<p>Ride can be ended when within 50 meters of any stand.</p>
+<p id="info">Ride can be ended when within 50 meters of any stand.</p>
 <br>
 <button id="disconnect" class="btn btn-default" th:onclick="disconnect()" disabled="disabled">End Ride</button>
 <br>
 <label id="conversation"></label>
 <br>
 <button id="connect" class="btn btn-default" th:onclick="connect([[${profile.id}]], [[${bikeId}]])">Ride Bike</button>
-
-
 </body>
 </html>

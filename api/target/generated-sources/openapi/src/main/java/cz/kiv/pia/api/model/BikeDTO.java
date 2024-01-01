@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  * BikeDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-12-18T23:10:12.209664200+01:00[Europe/Prague]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-01T16:51:57.058442300+01:00[Europe/Prague]")
 public class BikeDTO {
 
   private Integer id;
@@ -29,7 +29,7 @@ public class BikeDTO {
   private LocationDTO location;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-  private LocalDate lastServiceDate;
+  private LocalDate lastServiceStamp;
 
   private StandDTO stand;
 
@@ -85,24 +85,24 @@ public class BikeDTO {
     this.location = location;
   }
 
-  public BikeDTO lastServiceDate(LocalDate lastServiceDate) {
-    this.lastServiceDate = lastServiceDate;
+  public BikeDTO lastServiceStamp(LocalDate lastServiceStamp) {
+    this.lastServiceStamp = lastServiceStamp;
     return this;
   }
 
   /**
-   * Get lastServiceDate
-   * @return lastServiceDate
+   * Get lastServiceStamp
+   * @return lastServiceStamp
   */
   @Valid 
-  @Schema(name = "lastServiceDate", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("lastServiceDate")
-  public LocalDate getLastServiceDate() {
-    return lastServiceDate;
+  @Schema(name = "lastServiceStamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("lastServiceStamp")
+  public LocalDate getLastServiceStamp() {
+    return lastServiceStamp;
   }
 
-  public void setLastServiceDate(LocalDate lastServiceDate) {
-    this.lastServiceDate = lastServiceDate;
+  public void setLastServiceStamp(LocalDate lastServiceStamp) {
+    this.lastServiceStamp = lastServiceStamp;
   }
 
   public BikeDTO stand(StandDTO stand) {
@@ -136,13 +136,13 @@ public class BikeDTO {
     BikeDTO bikeDTO = (BikeDTO) o;
     return Objects.equals(this.id, bikeDTO.id) &&
         Objects.equals(this.location, bikeDTO.location) &&
-        Objects.equals(this.lastServiceDate, bikeDTO.lastServiceDate) &&
+        Objects.equals(this.lastServiceStamp, bikeDTO.lastServiceStamp) &&
         Objects.equals(this.stand, bikeDTO.stand);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, location, lastServiceDate, stand);
+    return Objects.hash(id, location, lastServiceStamp, stand);
   }
 
   @Override
@@ -151,7 +151,7 @@ public class BikeDTO {
     sb.append("class BikeDTO {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    lastServiceDate: ").append(toIndentedString(lastServiceDate)).append("\n");
+    sb.append("    lastServiceStamp: ").append(toIndentedString(lastServiceStamp)).append("\n");
     sb.append("    stand: ").append(toIndentedString(stand)).append("\n");
     sb.append("}");
     return sb.toString();
