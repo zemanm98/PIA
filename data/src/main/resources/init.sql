@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `ride` (
 );
 
 
-/*INSERT INTO `stand` (`name`, `latitude`, `longitude`) VALUES
+INSERT INTO `stand` (`name`, `latitude`, `longitude`) VALUES
 ('náměstí Republiky', '49.7479433N', '13.3786114E'),
 ('Fakulta aplikovaných věd ZČU', '49.7269708N', '13.3516872E'),
 ('Menza ZČU IV', '49.7237950N', '13.3523658E');
@@ -57,5 +57,6 @@ INSERT INTO `bike` (`longitude`, `latitude`, `lastServiceDate`, `standId`, `inUs
 ('13.3516872E', '49.7269708N', '2023-12-12', 2, 0),
 ('13.3523658E', '49.7237950N', '2023-12-11', 3, 0);
 
+/*
 INSERT INTO `ride` (`userId`, `bikeId`, `startStandId`, `endStandId`, `startTimestamp`, `endTimestamp`, `state`) VALUES
 ('1', 2, 1, 3, '2023-04-01 10:50:00', '2023-04-02 11:30:00', "COMPLETED");*/

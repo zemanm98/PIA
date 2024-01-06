@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  * BikeDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-01T16:51:57.058442300+01:00[Europe/Prague]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-06T15:22:57.561711400+01:00[Europe/Prague]")
 public class BikeDTO {
 
   private Integer id;

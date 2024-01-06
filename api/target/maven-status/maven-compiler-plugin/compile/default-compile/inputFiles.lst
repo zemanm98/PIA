@@ -1,10 +1,8 @@
-C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\ApiStandController.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\BikeController.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\Main.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\target\generated-sources\openapi\src\main\java\cz\kiv\pia\api\model\StandDTO.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\communication\EndRideMessage.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\target\generated-sources\openapi\src\main\java\cz\kiv\pia\api\model\RideDTO.java
-C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\ApiHistoryController.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\RepairController.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\target\generated-sources\openapi\src\main\java\cz\kiv\pia\api\model\BikeDTO.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\RideController.java
@@ -12,6 +10,7 @@ C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\vo\StandVO.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\WebSocketConfig.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\SecurityConfiguration.java
+C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\ApiController.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\BeanConfiguration.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\vo\LocationVO.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\SecurityController.java
@@ -22,9 +21,7 @@ C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\target\generated-sources\openapi\src\main\java\cz\kiv\pia\api\model\LocationDTO.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\target\generated-sources\openapi\src\main\java\cz\kiv\pia\api\controller\ApiApi.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\CustomAuthenticationProvider.java
-C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\ApiBikeController.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\vo\BikeVO.java
-C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\ApiRepairController.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\controller\HomeController.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\target\generated-sources\openapi\src\main\java\cz\kiv\pia\api\controller\ApiUtil.java
 C:\Users\zeman\OneDrive\Dokumenty\skol\PIA\api\src\main\java\cz\kiv\pia\restapi\vo\UserVO.java
